@@ -1,6 +1,13 @@
+
 <div class="container">
   <div class="row">
     
+    <ul class="nav nav-pills nav-pills-center">
+      <li role="presentation" class="active"><%= link_to "全部餐廳", root_path %></li>
+      <% @categories.each do |category| %>
+        <li role="presentation"><%= link_to category.name, category_path(category) %></li>
+      <% end %>
+    </ul>
     <!-- restaurants list，有多寫restaurant-item的class style -->
     <div class="restaurants clearfix">
       <% @restaurants.each do |restaurant| %>
