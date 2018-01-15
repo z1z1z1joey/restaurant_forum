@@ -9,7 +9,7 @@
       <% end %>
     </ul>
     <!-- restaurants list，有多寫restaurant-item的class style -->
-    <div class="restaurants clearfix">
+    <!-- <div class="restaurants clearfix">
       <% @restaurants.each do |restaurant| %>
         <div class="col-sm-6 col-md-4">
           <div class="restaurant-item">
@@ -22,11 +22,13 @@
           </div>
         </div>
       <% end %>
-    </div>  
+    </div>   -->
     <!-- 有generate kaminari paginate bootstrap style -->
-    <div class="text-center">
+   <!--  <div class="text-center">
       <%= paginate @restaurants %>
-    </div>
-      
+    </div> -->
+    <br>
+
+    <%= render partial:"shared/restaurant_list" %>
   </div>
 </div>
