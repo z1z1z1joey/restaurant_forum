@@ -26,18 +26,23 @@
 
   </div>
 </div>
- <% @restaurant.comments.each do |comment| %>
-    <div>
-      <h4><% a = comment.user.email.split("@") %><%= a[0]%></h4>
-      <p><%= simple_format comment.content %></p>
-      <p class="text-muted">
-        <em><%= time_ago_in_words(comment.created_at) %> </em>
-      </p>
-    </div>
-    <hr>
-    <% end %>
 <div class="container">
   <div class="row">
+
+   <% @restaurant.comments.each do |comment| %>
+      <div>
+        <h4><%= comment.user.email.split("@").first %></h4>
+        <p><%= simple_format comment.content %></p>
+        <p class="text-muted">
+          <em><%= time_ago_in_words(comment.created_at) %> ago</em>   
+          <% if current_user.admin? %>
+                <%= link_to "Delete", restaurant_comment_path(@restaurant, comment), method: :delete %>
+          <% end %>
+        </p>
+      </div>
+      <hr>
+   <% end %>
+
    <%= form_for [@restaurant, @comment] do |f| %>
     <div class="form-group">
       <%= f.text_area :content, placeholder: "留個言吧", class: "form-control" %>
@@ -46,6 +51,7 @@
       <%= f.submit class: "btn btn-primary" %>
       <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
     </div>
+    
   <% end %>
   </div>
 </div>
