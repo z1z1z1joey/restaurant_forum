@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    
+    <h3><strong>Edit Profile</strong></h3>
+
+    <%= form_for @user do |f| %>
+           <div class="form-group">
+             <%= f.label :name, "Name" %>
+             <%= f.text_field :name, class: "form-control" %>
+           </div>
+
+           <div class="form-group">
+             <%= f.label :intro, "自我介紹" %>
+             <%= f.text_field :intro, class: "form-control" %>
+           </div>
+
+          
+     
+           <div class="form-group">
+             <%= f.submit "Update", class: "btn btn-primary" %>
+             <%= link_to "Cancel",user_path(@user),class: "btn btn-default" %>
+           </div>
+    <% end %>
+  </div>
+</div>
