@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
    before_action :set_user, only: [:show, :edit, :update]
   def show
-   
+    @commented_restaurants = @user.restaurants.uniq
   end
   def edit
     
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:restaurant).permit(:name, :intro, :avatar)  
+    params.require(:user).permit(:name, :intro, :avatar)  
   end
 
   def set_user
