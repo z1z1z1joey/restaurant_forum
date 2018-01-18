@@ -1,0 +1,51 @@
+<ul class="nav nav-tabs">
+  <li role="presentation" ><%= link_to "首頁", root_path %></li>
+  <li role="presentation" class="active"><%= link_to "最新動態", feeds_restaurants_path %></li>
+</ul>
+
+<div class="row">
+  <div class="col-xs-2">
+  </div>
+
+  <div class="col-xs-8">
+
+    <h1>餐廳最新動態</h1>
+
+     <div class="col-xs-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+              <h3 class="panel-title">最新餐廳</h3>
+          </div>
+          <div class="panel-body">
+              <% @recent_restaurants.each do |restaurant|%>
+                <h4><%= link_to restaurant.name, restaurant_path(restaurant)%></h4>
+                <p><%= restaurant.category.name %></p>
+                <p><%= restaurant.description%></p>
+                <hr>
+              <% end %>
+          </div>
+        </div>
+     </div> 
+    <div class="col-xs-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+              <h3 class="panel-title">最新評論</h3>
+          </div>
+          <div class="panel-body">
+              <% @recent_comments.each do |comment|%>
+                <h4><%= link_to comment.restaurant.name, restaurant_path(comment.restaurant)%></h4>
+                <p><%= comment.content%></p>
+                <p>by<%= link_to comment.user.name, user_path(comment.user)%></p>
+                <hr>
+              <% end %>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  
+
+  <div class="col-xs-2">
+  </div>
+
+</div>
