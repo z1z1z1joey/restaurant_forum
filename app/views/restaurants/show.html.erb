@@ -20,6 +20,20 @@
       <%= simple_format @restaurant.description %>
       <hr>
        <%= link_to 'Dashboard', dashboard_restaurant_path(@restaurant), class: "btn btn-primary" %>
+<!--        <% if @restaurant.is_favorited?(current_user) %>
+          <%= link_to 'Unfavorite', unfavorite_restaurant_path(@restaurant), method: :post, class: "btn btn-info" %>
+       <% else %>
+          <%= link_to 'Favorite', favorite_restaurant_path(@restaurant), method: :post, class: "btn btn-primary" %>
+       <% end %> -->
+       <%= render partial: "shared/favorite", locals: {restaurant: restaurant} %>
+       
+<!--        <% if @restaurant.is_liked?(current_user) %>
+       <%= link_to 'Unlike', unlike_restaurant_path(@restaurant), method: :post, class: "btn btn-info" %>
+       <% else %>
+       <%= link_to 'Like', like_restaurant_path(@restaurant), method: :post, class: "btn btn-primary" %>
+       <% end %> -->
+       <%= render partial: "shared/like", locals: {restaurant: restaurant} %>
+
     </div>
 
     <hr>

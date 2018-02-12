@@ -10,6 +10,14 @@ Rails.application.routes.draw do
     #瀏覽個別餐廳的Dashboard
     member do
       get :dashboard
+      post :favorite
+      post :unfavorite
+    end
+
+    member do
+      get :dashboard
+      post :like
+      post :unlike
     end
   end
   resources :users,only:[:show , :edit, :update]
@@ -22,4 +30,6 @@ Rails.application.routes.draw do
     resources :categories
     root "restaurants#index"
   end
+
+
 end
